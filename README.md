@@ -34,7 +34,7 @@
    $ git clone https://github.com/celenny/frases_do_dia_app/
 
    - Entre no diretório:
-   $ cd payflow
+   $ cd frases_do_dia_app
 
    - Instale as dependências:
    $ flutter pub get
