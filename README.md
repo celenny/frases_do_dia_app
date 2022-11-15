@@ -73,6 +73,25 @@
 
 
    <div align="center">
-   [![Linkedin Badge](https://img.shields.io/badge/-Celenny%20Cristhyne-292929?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/celenny/)](https://www.linkedin.com/in/celenny/)
-
+   <h2 align="center">Contribuidores 💡</h2>
+   <table>
+   <tr>
+      <td align="center">
+      <a href="#">
+        <img src="https://avatars.githubusercontent.com/celenny" width="100px;" alt="Foto de Celenny"/><br>
+        <sub>
+          <b>Celenny</b>
+        </sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="#">
+        <img src="https://avatars1.githubusercontent.com/Wiu0" width="100px;" alt="Foto de William Noronha"/><br>
+        <sub>
+          <b>Wiu</b>
+        </sub>
+      </a>
+    </td>
+   </tr>
+   </table>
    </div>
