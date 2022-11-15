@@ -1,6 +1,7 @@
 import "dart:math";
 import 'package:flutter/material.dart';
-
+import 'package:frases_do_dia/src/application/service/quote_service.dart';
+import 'package:frases_do_dia/src/domain/quote_model.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -63,7 +64,12 @@ class _HomeState extends State<Home> {
                 child: Text("Nova Frase "),
                 onPressed: () {
                   setState(() {
-                    _fraseGerada = _frases.elementAt(Random().nextInt(_frases.length));
+                    // _fraseGerada = _frases.elementAt(Random().nextInt(_frases.length));
+                    QuoteService()
+                        .find()
+                        .then((quote) => _fraseGerada = quote.text)
+                        .onError((error, stackTrace) =>
+                            _fraseGerada = error.toString());
                   });
                 },
                 style: ElevatedButton.styleFrom(
@@ -74,7 +80,7 @@ class _HomeState extends State<Home> {
                     fontWeight: FontWeight.bold,
                   ),
                   shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(40),
+                    borderRadius: BorderRadius.circular(40),
                   ),
                 ),
               ),
