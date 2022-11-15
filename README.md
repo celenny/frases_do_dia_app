@@ -63,6 +63,16 @@
 
    <div align="center">
 
+   <h2 align="center">Links de estudo 🤓</h2>
+
+   ```
+   -  Estrutura de projeto
+
+   https://codewithandrea.com/articles/flutter-project-structure/
+   ```
+
+
+   <div align="center">
    [![Linkedin Badge](https://img.shields.io/badge/-Celenny%20Cristhyne-292929?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/celenny/)](https://www.linkedin.com/in/celenny/)
 
    </div>
