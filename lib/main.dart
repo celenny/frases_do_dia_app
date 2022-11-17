@@ -1,7 +1,7 @@
-import "dart:math";
 import 'package:flutter/material.dart';
-import 'package:frases_do_dia/src/application/service/quote_service.dart';
-import 'package:frases_do_dia/src/domain/quote_model.dart';
+
+import 'package:frases_do_dia/src/presentation/controller/quote_controller.dart';
+import 'package:rx_notifier/rx_notifier.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -18,17 +18,9 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  var _frases = [
-    "É em meio a dificuldade que se encontra a oportunidade.",
-    "Se nada der certo hoje, acorde mais cedo amanhã e tente novamente.",
-    "A primeira pessoa que tem que acreditar nos seus sonhos é você mesmo, não aguarde pelo incentivo dos outros",
-    "Você é digno de tudo o que almeja e merecedor de tudo o que possui",
-    "Quando você se acostuma a confiar em si mesmo, as coisas começam a dar certo",
-    "Você tem a capacidade para dominar o mundo, com o seu esforço e sendo você mesmo",
-    "Confie no seu potencial, encare os seus medos e faça da bravura o seu mantra diário",
-  ];
-
   var _fraseGerada = "Clique abaixo para gerar uma frase!";
+  var labelButton = "Nova Frase";
+  var controller = QuoteController();
 
   @override
   Widget build(BuildContext context) {
@@ -51,27 +43,20 @@ class _HomeState extends State<Home> {
                 width: 240,
                 fit: BoxFit.cover,
               ),
-              Text(
-                "$_fraseGerada",
-                textAlign: TextAlign.justify,
-                style: TextStyle(
-                  fontSize: 25,
-                  fontStyle: FontStyle.italic,
-                  color: Color.fromARGB(255, 61, 56, 56),
-                ),
-              ),
+              RxBuilder(
+                  builder: (_) => Text(controller.result,
+                      textAlign: TextAlign.justify,
+                      style: TextStyle(
+                        fontSize: 25,
+                        fontStyle: FontStyle.italic,
+                        color: Color.fromARGB(255, 61, 56, 56),
+                      ))),
               ElevatedButton(
-                child: Text("Nova Frase "),
-                onPressed: () {
-                  setState(() {
-                    // _fraseGerada = _frases.elementAt(Random().nextInt(_frases.length));
-                    QuoteService()
-                        .find()
-                        .then((quote) => _fraseGerada = quote.text)
-                        .onError((error, stackTrace) =>
-                            _fraseGerada = error.toString());
-                  });
-                },
+                child: RxBuilder(
+                    builder: (_) => Text(!controller.result.isEmpty
+                        ? labelButton
+                        : "Pesquisando uma frase para vc!")),
+                onPressed: controller.find,
                 style: ElevatedButton.styleFrom(
                   primary: Color(0xff6667AB),
                   textStyle: TextStyle(
